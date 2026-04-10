@@ -7,7 +7,7 @@
 ![Plotly](https://img.shields.io/badge/Plotly-5.22-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
 ![Blackbox AI](https://img.shields.io/badge/Blackbox-API-000000?style=for-the-badge&logo=openai&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-
+![Preview del Dashboard](media/dashboard-previwe.jpg)
 </div>
 
 ---
