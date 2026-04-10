@@ -1,0 +1,9 @@
+# src/ — ignorar pycaches
+src/__pycache__/
+src/*.pyc
+
+# Datos de salida (se montan como volumen)
+data/
+
+# Variables de entorno
+.env

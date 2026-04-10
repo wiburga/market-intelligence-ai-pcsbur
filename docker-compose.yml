@@ -1,0 +1,38 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# docker-compose.yml — PCSBUR Market Intelligence Dashboard
+# ─────────────────────────────────────────────────────────────────────────────
+version: "3.9"
+
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pcsbur_market_dashboard
+    image: pcsbur-market-dashboard:latest
+
+    # ── Mapeo de puertos ─────────────────────────────────────────────────────
+    ports:
+      - "8501:8501"
+
+    # ── Variables de entorno ─────────────────────────────────────────────────
+    env_file:
+      - .env
+
+    environment:
+      - LOG_LEVEL=INFO
+
+    # ── Volumen para persistir los reportes generados ────────────────────────
+    volumes:
+      - ./data/output:/app/data/output
+
+    # ── Política de reinicio ─────────────────────────────────────────────────
+    restart: "unless-stopped"
+
+    # ── Healthcheck ──────────────────────────────────────────────────────────
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
